@@ -4,6 +4,7 @@ from langchain_core.embeddings import Embeddings
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_ollama import OllamaEmbeddings
 from langchain_openai import OpenAIEmbeddings
+from langchain_nvidia_ai_endpoints import NVIDIAEmbeddings
 from open_webui.apps.ollama.main import get_ollama_embedding_model_name_and_base_url
 from open_webui.apps.rag.utils import get_model_path
 from open_webui.config import (
@@ -58,6 +59,12 @@ def set_embedding_function(
                 base_url=base_url,
                 api_key=api_key,
                 chunk_size=batch_size,
+            )
+        case "nvidia":
+            return NVIDIAEmbeddings(
+                model=model_name,
+                base_url=base_url,
+                api_key=api_key,
             )
         case _:
             model_path = get_model_path(model=model_name, update_model=update_model)
