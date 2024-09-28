@@ -110,7 +110,7 @@
 		const res = await updateEmbeddingConfig(localStorage.token, {
 			embedding_engine: embeddingEngine,
 			embedding_model: embeddingModel,
-			...(embeddingEngine === 'openai'
+			...(embeddingEngine === 'openai' || embeddingEngine === 'nvidia'
 				? {
 						openai_config: {
 							key: OpenAIKey,
@@ -348,6 +348,8 @@
 								embeddingModel = '';
 							} else if (e.target.value === 'openai') {
 								embeddingModel = 'text-embedding-3-small';
+							} else if (e.target.value === 'nvidia') {
+								embeddingModel = 'NV-Embed-QA';
 							} else if (e.target.value === '') {
 								embeddingModel = 'sentence-transformers/all-MiniLM-L6-v2';
 							}
@@ -356,11 +358,12 @@
 						<option value="">{$i18n.t('Default (SentenceTransformers)')}</option>
 						<option value="ollama">{$i18n.t('Ollama')}</option>
 						<option value="openai">{$i18n.t('OpenAI')}</option>
+						<option value="nvidia">{$i18n.t('Nvidia')}</option>
 					</select>
 				</div>
 			</div>
 
-			{#if embeddingEngine === 'openai'}
+			{#if embeddingEngine === 'openai' || embeddingEngine === 'nvidia'}
 				<div class="my-0.5 flex gap-2">
 					<input
 						class="flex-1 w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-none"
