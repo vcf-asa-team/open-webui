@@ -42,7 +42,7 @@ langchain-huggingface==0.0.3
 langchain-milvus==0.1.4
 langchain-ollama==0.1.3
 langchain-openai==0.1.22
-langchain-postgres==0.0.9
+langchain-postgres==0.0.12
 
 # Nvidia
 langchain-nvidia-ai-endpoints==0.2.0

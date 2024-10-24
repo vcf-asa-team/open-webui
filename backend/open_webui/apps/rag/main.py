@@ -946,13 +946,13 @@ def store_data_in_vector_db(
             collection_name=collection_name,
             embedding_function=app.state.EMBEDDING_FUNCTION,
         )
-        if not vector_store.is_collection_empty():
-            if silent_error:
-                return True
-            else:
-                raise Exception(
-                    "The VectorStore collection is not empty. Consider setting overwrite or append option to True."
-                )
+        # if not vector_store.is_collection_empty():
+        #     if silent_error:
+        #         return True
+        #     else:
+        #         raise Exception(
+        #             "The VectorStore collection is not empty. Consider setting overwrite or append option to True."
+        #         )
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=app.state.config.CHUNK_SIZE,
         chunk_overlap=app.state.config.CHUNK_OVERLAP,
@@ -995,13 +995,13 @@ def store_text_in_vector_db(
             collection_name=collection_name,
             embedding_function=app.state.EMBEDDING_FUNCTION,
         )
-        if not vector_store.is_collection_empty():
-            if silent_error:
-                return True
-            else:
-                raise Exception(
-                    "The VectorStore collection is not empty. Consider setting overwrite or append option to True."
-                )
+        # if not vector_store.is_collection_empty():
+        #     if silent_error:
+        #         return True
+        #     else:
+        #         raise Exception(
+        #             "The VectorStore collection is not empty. Consider setting overwrite or append option to True."
+        #         )
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=app.state.config.CHUNK_SIZE,
         chunk_overlap=app.state.config.CHUNK_OVERLAP,
